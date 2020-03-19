@@ -35,6 +35,7 @@ nuke.knobDefault('ShuffleCopy.label','[value in]_[value out]')
 nuke.knobDefault('LayerContactSheet.showLayerNames', 'True')
 nuke.knobDefault('Remove.channels','alpha')
 nuke.knobDefault('Merge2.bbox','B')
+nuke.knobDefault('ChannelMerge.bbox','B side')
 nuke.knobDefault('Write.create_directories', 'True')
 #nuke.knobDefault("Write.exr.compression","4")   #RLE as default EXR compression
 nuke.knobDefault("EXPTool.mode", "0")   #Stops as default Exposure Parameter
