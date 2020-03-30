@@ -111,9 +111,9 @@ def restartNuke():
 		if os.path.isfile(scriptName):
 			nuke.scriptSave()
 			if nuke.env['nukex'] == True:
-				subprocess.Popen([sys.executable, '--nukex', scriptName],shell=True)
+				subprocess.Popen([sys.executable, '--nukex', scriptName]).wait()
 			else:
-				subprocess.Popen([sys.executable, scriptName], shell=True)
+				subprocess.Popen([sys.executable, scriptName]).wait()
 			nuke.modified(False)
 			nuke.scriptExit()
 		else:
