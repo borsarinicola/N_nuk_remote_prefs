@@ -111,11 +111,9 @@ def restartNuke():
 		if os.path.isfile(scriptName):
 			nuke.scriptSave()
 			if nuke.env['nukex'] == True:
-				cmd = "sys.executable, '--nukex', scriptName"
-				subprocess.Popen(cmd, creationflags=subprocess.CREATE_NEW_CONSOLE)
+				subprocess.Popen([sys.executable, '--nukex', scriptName],shell=True)
 			else:
-				cmd = "sys.executable, scriptName"
-				subprocess.Popen(cmd, creationflags=subprocess.CREATE_NEW_CONSOLE)
+				subprocess.Popen([sys.executable, scriptName], shell=True)
 			nuke.modified(False)
 			nuke.scriptExit()
 		else:
