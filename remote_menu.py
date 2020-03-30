@@ -105,15 +105,22 @@ menubar = nuke.menu('Nuke')
 def restartNuke():
 
 	if nuke.ask('Are you sure you want to restart Nuke?'):
+		
+		from PySide2.QtWidgets import QApplication
+		import PySide2.QtCore as QtCore
 
 		scriptName = nuke.root().knob('name').getValue() 
 
 		if os.path.isfile(scriptName):
 			nuke.scriptSave()
 			if nuke.env['nukex'] == True:
+				QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)          
 				subprocess.Popen([sys.executable, '--nukex', scriptName]).wait()
+				QApplication.restoreOverrideCursor()
 			else:
+				QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)          
 				subprocess.Popen([sys.executable, scriptName]).wait()
+				QApplication.restoreOverrideCursor()
 			nuke.modified(False)
 			nuke.scriptExit()
 		else:
