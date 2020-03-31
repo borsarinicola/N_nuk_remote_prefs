@@ -114,13 +114,15 @@ def restartNuke():
 		if os.path.isfile(scriptName):
 			nuke.scriptSave()
 			if nuke.env['nukex'] == True:
-				QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)          
-				subprocess.Popen([sys.executable, '--nukex', scriptName]).wait()
-				QApplication.restoreOverrideCursor()
+				#QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)    
+				os.system('konsole -hold -e {} {} {}'.format(sys.executable, scriptName, '--nukex'))
+				#subprocess.Popen([sys.executable, '--nukex', scriptName]).wait()
+				#QApplication.restoreOverrideCursor()
 			else:
-				QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)          
-				subprocess.Popen([sys.executable, scriptName]).wait()
-				QApplication.restoreOverrideCursor()
+				#QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)       
+				os.system('konsole -hold -e {} {}'.format(sys.executable, scriptName))
+				#subprocess.Popen([sys.executable, scriptName]).wait()
+				#QApplication.restoreOverrideCursor()
 			nuke.modified(False)
 			nuke.scriptExit()
 		else:
