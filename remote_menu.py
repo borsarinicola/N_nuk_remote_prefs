@@ -105,30 +105,22 @@ menubar = nuke.menu('Nuke')
 def restartNuke():
 
 	if nuke.ask('Are you sure you want to restart Nuke?'):
-		
-		from PySide2.QtWidgets import QApplication
-		import PySide2.QtCore as QtCore
 
 		scriptName = nuke.root().knob('name').getValue() 
 
 		if os.path.isfile(scriptName):
 			nuke.scriptSave()
 			if nuke.env['nukex'] == True:
-				#QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)    
-				os.system('konsole -hold -e {} {} {}'.format(sys.executable, scriptName, '--nukex')).wait()
-				#subprocess.Popen([sys.executable, '--nukex', scriptName]).wait()
-				#QApplication.restoreOverrideCursor()
+				subprocess.Popen([sys.executable, '--nukex', scriptName])
 			else:
-				#QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)       
-				os.system('konsole -hold -e {} {}'.format(sys.executable, scriptName)).wait()
-				#subprocess.Popen([sys.executable, scriptName]).wait()
-				#QApplication.restoreOverrideCursor()
+				subprocess.Popen([sys.executable, scriptName])
 			nuke.modified(False)
 			nuke.scriptExit()
 		else:
 			nuke.scriptNew('')
 			nuke.modified(False)
 			nuke.scriptExit()
+			
 
 menubar.addCommand('File/Restart Nuke', 'restartNuke()', 'alt+shift+q', icon='', index=5) # add option that restart nuke
 menubar.addCommand('Edit/Autocrop Selected Nodes','nukescripts.autocrop()') # add gizmo to group conversion - importing it when in use
