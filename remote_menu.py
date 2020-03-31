@@ -115,12 +115,12 @@ def restartNuke():
 			nuke.scriptSave()
 			if nuke.env['nukex'] == True:
 				#QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)    
-				os.system('konsole -hold -e {} {} {}'.format(sys.executable, scriptName, '--nukex'))
+				os.system('konsole -hold -e {} {} {}'.format(sys.executable, scriptName, '--nukex')).wait()
 				#subprocess.Popen([sys.executable, '--nukex', scriptName]).wait()
 				#QApplication.restoreOverrideCursor()
 			else:
 				#QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)       
-				os.system('konsole -hold -e {} {}'.format(sys.executable, scriptName))
+				os.system('konsole -hold -e {} {}'.format(sys.executable, scriptName)).wait()
 				#subprocess.Popen([sys.executable, scriptName]).wait()
 				#QApplication.restoreOverrideCursor()
 			nuke.modified(False)
