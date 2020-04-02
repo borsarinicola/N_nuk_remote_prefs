@@ -124,9 +124,7 @@ def restartNuke():
 
 
         if 'REZ_VOLT_SESSION_ROOT' in os.environ:
-            print subprocess_options
             subprocess_options.update(separate_terminal_options)
-            print subprocess_options
 
         if os.path.isfile(scriptName):
             nuke.scriptSave()
