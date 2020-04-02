@@ -104,22 +104,40 @@ menubar = nuke.menu('Nuke')
 
 def restartNuke():
 
-	if nuke.ask('Are you sure you want to restart Nuke?'):
+    if nuke.ask('Are you sure you want to restart Nuke?'):
 
-		scriptName = nuke.root().knob('name').getValue() 
+        scriptName = nuke.root().knob('name').getValue() 
 
-		if os.path.isfile(scriptName):
-			nuke.scriptSave()
-			if nuke.env['nukex'] == True:
-				subprocess.Popen([sys.executable, '--nukex', scriptName])
-			else:
-				subprocess.Popen([sys.executable, scriptName])
-			nuke.modified(False)
-			nuke.scriptExit()
-		else:
-			nuke.scriptNew('')
-			nuke.modified(False)
-			nuke.scriptExit()
+        subprocess_options = {
+            "shell": True
+            }
+        
+        separate_terminal_options = {
+           "close_fds": True,
+           "preexec_fn": os.setsid
+           }
+
+        if nuke.env['nukex'] == True:
+            session = '--nukex'
+        else:
+            session = '--nuke'
+
+
+        if 'REZ_VOLT_SESSION_ROOT' in os.environ:
+            print subprocess_options
+            subprocess_options.update(separate_terminal_options)
+            print subprocess_options
+
+        if os.path.isfile(scriptName):
+            nuke.scriptSave()
+            launch_cmd = '{} {} {}'.format(sys.executable, session, scriptName)
+            subprocess.Popen(launch_cmd, **subprocess_options)
+            nuke.modified(False)
+            nuke.scriptExit()
+        else:
+            nuke.scriptNew('')
+            nuke.modified(False)
+            nuke.scriptExit()
 			
 
 menubar.addCommand('File/Restart Nuke', 'restartNuke()', 'alt+shift+q', icon='', index=5) # add option that restart nuke
