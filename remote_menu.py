@@ -128,7 +128,7 @@ def restartNuke():
 
         if os.path.isfile(scriptName):
             nuke.scriptSave()
-            launch_cmd = '{} {} {}'.format(sys.executable, session, scriptName)
+            launch_cmd = '{} {} -V {}'.format(sys.executable, session, scriptName)
             subprocess.Popen(launch_cmd, **subprocess_options)
             nuke.modified(False)
             nuke.scriptExit()
