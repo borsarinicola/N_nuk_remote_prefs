@@ -146,5 +146,5 @@ def closeProperties():
     [node.hideControlPanel() for node in nuke.allNodes(recurseGroups=True)]
 
 
-nuke.menu("Nuke").addCommand('Edit/Close Nodes Properties', 'closeProperties()', index=11, '`')
+nuke.menu("Nuke").addCommand('Edit/Close Nodes Properties', 'closeProperties()', '`')
 
