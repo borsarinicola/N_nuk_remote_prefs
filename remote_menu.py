@@ -140,3 +140,11 @@ def restartNuke():
 
 menubar.addCommand('File/Restart Nuke', 'restartNuke()', 'alt+shift+q', icon='', index=5) # add option that restart nuke
 menubar.addCommand('Edit/Autocrop Selected Nodes','nukescripts.autocrop()') # add gizmo to group conversion - importing it when in use
+
+
+def closeProperties():
+    [node.hideControlPanel() for node in nuke.allNodes(recurseGroups=True)]
+
+
+nuke.menu("Nuke").addCommand('Edit/Close Nodes Properties', 'closeProperties()', index=11, '`')
+
