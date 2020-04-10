@@ -145,6 +145,5 @@ menubar.addCommand('Edit/Autocrop Selected Nodes','nukescripts.autocrop()') # ad
 def closeProperties():
     [node.hideControlPanel() for node in nuke.allNodes(recurseGroups=True)]
 
-
-nuke.menu("Nuke").addCommand('Edit/Close Nodes Properties', 'closeProperties()', '`')
+menubar.addCommand('Edit/Close Nodes Properties', 'closeProperties()', '`')
 
