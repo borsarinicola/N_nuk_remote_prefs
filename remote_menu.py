@@ -150,8 +150,3 @@ def closeProperties():
 
 if nuke.env['LINUX']:
 	menubar.addCommand('Edit/Close Nodes Properties', 'closeProperties()', '`')
-else:
-	menubar.addCommand('Edit/Close Nodes Properties', 'closeProperties()', '|')
-	
-
-
