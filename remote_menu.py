@@ -142,11 +142,7 @@ menubar.addCommand('File/Restart Nuke', 'restartNuke()', 'alt+shift+q', icon='',
 menubar.addCommand('Edit/Autocrop Selected Nodes','nukescripts.autocrop()') # add gizmo to group conversion - importing it when in use
 
 
-######
-
 def closeProperties():
     [node.hideControlPanel() for node in nuke.allNodes(recurseGroups=True)]
 
-
-if nuke.env['LINUX']:
-	menubar.addCommand('Edit/Close Nodes Properties', 'closeProperties()', '`')
+menubar.addCommand('Edit/Close Nodes Properties', 'closeProperties()', '`')
