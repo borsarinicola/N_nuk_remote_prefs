@@ -53,6 +53,8 @@ def createkeep():
 	return
 nuke.menu('Nodes').addCommand( "Channel/Keep", "createkeep()", icon="Remove.png")
 nuke.menu('Nodes').addCommand( "Filter/Dilate", "nuke.createNode('Dilate')", icon="ErodeFast.png")
+nuke.menu('Nodes').addCommand( "Merge/PSDMerge", "nuke.createNode('PSDMerge')", icon="PSDMerge.png")
+
 
 
 #add custom resolutions to format list
