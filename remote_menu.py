@@ -83,6 +83,8 @@ toolbar.addCommand('Merge/Premult', 'nuke.createNode("Premult")', 'alt+shift+p')
 toolbar.addCommand('Merge/Unpremult', 'nuke.createNode("Unpremult")', 'alt+shift+u')
 toolbar.addCommand('Channel/ChannelMerge', 'nuke.createNode("ChannelMerge")', 'shift+m')
 toolbar.addCommand('Transform/TransformMasked', 'nuke.createNode("TransformMasked")', 'shift+t')
+toolbar.addCommand('Channel/Shuffle', 'nuke.createNode("Shuffle1")', index=0, icon='Shuffle.png')
+toolbar.addCommand('Channel/ShuffleCopy', 'nuke.createNode("ShuffleCopy")', index=1, icon='ShuffleCopy.png')
 
 
 # ####################################
