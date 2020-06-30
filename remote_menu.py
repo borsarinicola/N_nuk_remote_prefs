@@ -153,9 +153,9 @@ def bbox2b(side):
         except:
             pass
 
-menubar.addCommand('Edit/Set Nodes BBox/to A', 'bbox2b(side='A')', 'shift+a')
-menubar.addCommand('Edit/Set Nodes BBox/to B', 'bbox2b(side='B')', 'shift+b')
-menubar.addCommand('Edit/Set Nodes BBox/to Union', 'bbox2b(side='Union')', 'shift+u')
+menubar.addCommand('Edit/Set Nodes BBox/to A', 'bbox2b(side="A")', 'shift+a')
+menubar.addCommand('Edit/Set Nodes BBox/to B', 'bbox2b(side="B")', 'shift+b')
+menubar.addCommand('Edit/Set Nodes BBox/to Union', 'bbox2b(side="union")', 'shift+u')
 
 
 def closeProperties():
