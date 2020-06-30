@@ -146,14 +146,16 @@ menubar.addCommand('File/Restart Nuke', 'restartNuke()', 'alt+shift+q', icon='',
 menubar.addCommand('Edit/Autocrop Selected Nodes','nukescripts.autocrop()') # add gizmo to group conversion - importing it when in use
 
 
-def bbox2b():
+def bbox2b(side):
     for node in nuke.selectedNodes():
         try:
-            node['bbox'].setValue('B')
+            node['bbox'].setValue(side)
         except:
             pass
 
-menubar.addCommand('Edit/Nodes bbox to B', 'bbox2b()', 'shift+b')
+menubar.addCommand('Edit/Set Nodes BBox/to A', 'bbox2b(side='A')', 'shift+a')
+menubar.addCommand('Edit/Set Nodes BBox/to B', 'bbox2b(side='B')', 'shift+b')
+menubar.addCommand('Edit/Set Nodes BBox/to Union', 'bbox2b(side='Union')', 'shift+b')
 
 
 def closeProperties():
