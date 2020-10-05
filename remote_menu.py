@@ -94,6 +94,7 @@ toolbar.addCommand('Channel/ShuffleCopy', 'nuke.createNode("ShuffleCopy")', inde
 
 nuke.setUserPreset("Expression", "Binary Alpha - Fringe to 1", {'expr3': 'a>0?1:0', 'selected': 'true', 'label': '[value expr3]'})
 nuke.setUserPreset("Expression", "Binary Alpha - Fringe to 0", {'expr3': 'a<1?0:1', 'selected': 'true', 'label': '[value expr3]'})
+nuke.setUserPreset("Expression", "STMap", {'expr0': '(x+0.5)/width', 'expr1': '(y+0.5)/height', 'selected': 'true', 'label': 'STMap'})
 nuke.setUserPreset("MergeExpression", "Alpha Disjoint-Over", {'temp_name0': 'a', 'selected': 'true', 'expr0': 'A.a+B.a<1?A.a+B.a:B.a==0?A.a:a', 'label': 'Alpha Disjoint-Over', 'channel3': 'none', 'channel2': 'none', 'channel1': 'none', 'channel0': 'alpha', 'temp_expr0': 'A.a+B.a*(1-A.a)/B.a'})
 
 
