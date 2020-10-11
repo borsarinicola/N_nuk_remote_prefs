@@ -176,6 +176,7 @@ def addCTGradeControl():
 
     ref = nuke.Int_Knob('reference_frame', 'Reference Fame')
     frame = nuke.PyScript_Knob('set_frame', 'Set Current Frame', 'nuke.thisNode()["reference_frame"].setValue(nuke.frame())')
+    node['label'].setValue('Ref [value reference_frame]')
     grade = nuke.PyScript_Knob('create_grade', 'Create Grade Node', '''
 
 node = nuke.thisNode()
