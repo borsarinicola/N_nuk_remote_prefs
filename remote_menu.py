@@ -163,3 +163,42 @@ def closeProperties():
     [node.hideControlPanel() for node in nuke.allNodes(recurseGroups=True)]
 
 menubar.addCommand('Edit/Close Nodes Properties', 'closeProperties()', '`')
+
+
+######################################
+
+#add grade control to CurveTool
+
+def addCTGradeControl():
+    node = nuke.thisNode()
+    tab = nuke.Tab_Knob('GradeControl')
+    node.addKnob(tab)
+
+    ref = nuke.Int_Knob('reference_frame', 'Reference Fame')
+    frame = nuke.PyScript_Knob('set_frame', 'Set Current Frame', 'nuke.thisNode()["reference_frame"].setValue(nuke.frame())')
+    grade = nuke.PyScript_Knob('create_grade', 'Create Grade Node', '''
+
+node = nuke.thisNode()
+node_name = nuke.thisNode()['name'].value()
+grade = nuke.createNode('Grade')
+grade['whitepoint'].setSingleValue(False)
+grade['white'].setSingleValue(False)
+grade['whitepoint'].setExpression('{0}.intensitydata.r({0}.reference_frame)'.format(node_name), channel=0)
+grade['whitepoint'].setExpression('{0}.intensitydata.g({0}.reference_frame)'.format(node_name), channel=1)
+grade['whitepoint'].setExpression('{0}.intensitydata.b({0}.reference_frame)'.format(node_name), channel=2)
+grade['whitepoint'].setExpression('{0}.intensitydata.a({0}.reference_frame)'.format(node_name), channel=3)
+grade['white'].setExpression('{0}.intensitydata.r'.format(node_name), channel=0)
+grade['white'].setExpression('{0}.intensitydata.g'.format(node_name), channel=1)
+grade['white'].setExpression('{0}.intensitydata.b'.format(node_name), channel=2)
+grade['white'].setExpression('{0}.intensitydata.a'.format(node_name), channel=3)
+
+    ''')
+
+    grade.setFlag(0x1000)
+    node.addKnob(ref)
+    node.addKnob(frame)
+    node.addKnob(grade)
+    node['reference_frame'].setValue(nuke.frame())
+
+
+nuke.addOnCreate(addCTGradeControl, nodeClass='CurveTool')
