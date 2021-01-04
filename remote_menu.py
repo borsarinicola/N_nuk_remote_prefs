@@ -97,6 +97,7 @@ nuke.setUserPreset("Expression", "Binary Alpha - Fringe to 0", {'expr3': 'a<1?0:
 nuke.setUserPreset("Expression", "STMap", {'expr0': '(x+0.5)/width', 'expr1': '(y+0.5)/height', 'selected': 'true', 'label': 'STMap'})
 nuke.setUserPreset("Expression", "Channels to Alpha", {'selected': 'true', 'temp_name2': 'GB', 'temp_name3': 'RGB', 'temp_name0': 'RG', 'temp_name1': 'RB', 'expr3': 'RGB', 'temp_expr2': 'g+b-(g*b)', 'temp_expr3': 'RG+b-(RG*b)', 'temp_expr0': 'r+g-(r*g)', 'temp_expr1': 'r+b-(r*b)'})
 nuke.setUserPreset("MergeExpression", "Alpha Disjoint-Over", {'temp_name0': 'a', 'selected': 'true', 'expr0': 'A.a+B.a<1?A.a+B.a:B.a==0?A.a:a', 'label': 'Alpha Disjoint-Over', 'channel3': 'none', 'channel2': 'none', 'channel1': 'none', 'channel0': 'alpha', 'temp_expr0': 'A.a+B.a*(1-A.a)/B.a'})
+nuke.setUserPreset("ColorMatrix", "LMT Hilights Staturation Fix", {'selected': 'true', 'matrix': ' {0.9404372683 -0.0183068787 0.0778696104} {0.0083786969 0.8286599939 0.1629613092} {0.0005471261 -0.0008833746 1.000336249}'})
 
 
 # ####################################
